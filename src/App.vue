@@ -13,20 +13,16 @@ import HelloWorld from './components/HelloWorld.vue'
       <div>TODOリストを新しく作成</div>
       <div>
         <input type="text" placeholder="合言葉を入力">
-        <button>作成</button>
+        <button class="btn btn-primary">作成</button>
       </div>
     </div>
     <div style="display: block;">
     <div>TODOリストを検索</div>
     <div>
         <input type="text" placeholder="合言葉を入力">
-        <button>検索</button>
+        <button class="btn btn-primary">検索</button>
       </div>
       </div>
-  </div>
-  <div class="container mt-5">
-    <h1 class="text-primary">Bootstrap 動作確認</h1>
-    <button class="btn btn-success">ボタン</button>
   </div>
 
 
