@@ -1,0 +1,30 @@
+/* src/assets/styles/main.scss */
+
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  color: $primary-color;
+}
+
+button {
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $secondary-color;
+  }
+}
+
+div {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}

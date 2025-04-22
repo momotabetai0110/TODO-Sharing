@@ -8,7 +8,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <h2>TODO Sharing</h2>
   </div>
 
-  <div style="display: flex">
+  <div style="display: flex; font-size: x-large;">
     <div style="display: block;">
       <div>TODOリストを新しく作成</div>
       <div>
@@ -16,7 +16,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <button class="btn btn-primary">作成</button>
       </div>
     </div>
-    <div style="display: block;">
+    <div style="display: block; margin-left: 200px;">
     <div>TODOリストを検索</div>
     <div>
         <input type="text" placeholder="合言葉を入力">
@@ -38,6 +38,8 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style scoped>
+
+@import '@/assets/styles/main.scss';  /* SCSSファイルのインポート */
 .logo {
   height: 6em;
   padding: 1.5em;
