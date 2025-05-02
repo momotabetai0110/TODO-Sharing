@@ -16,14 +16,21 @@
       </div>
       </div>
   </div>
+  <ErrorModal
+    :show="showErrorModal"
+    message="合言葉を入力してください"
+    @close="showErrorModal = false"
+  />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import ErrorModal from '@/components/ErrorModal.vue'
 
 const router = useRouter()
 const createKeyword = ref('')
+const showErrorModal = ref(false)
 
 const createTodo = () => {
     if (createKeyword.value.trim()) {
@@ -31,8 +38,8 @@ const createTodo = () => {
             path: '/todo',
             query: { keyword: createKeyword.value }
         })
-    }else{
-      console.log('aaa')
+    } else {
+      showErrorModal.value = true
     }
 }
 </script>
