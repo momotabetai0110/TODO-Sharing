@@ -24,6 +24,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import ErrorModal from '@/components/ErrorModal.vue'
 import axios from 'axios'
+import { API_URL } from '@/constants/api'
 
 const router = useRouter()
 const createKeyword = ref('')
@@ -35,17 +36,19 @@ const createTodo = async () => {
     if (createKeyword.value.trim()) {
         try {
             //API実行
-            const createResponse = await axios.post('http://127.0.0.1/api/todo-lists', {
+            const createResponse = await axios.post(`${API_URL}todo-lists`, {
                 list_name: createKeyword.value
             })
 
-            if (createResponse.data.result === 0) {
+            if (createResponse.data.result === 1) {
                 //成功の場合
                 router.push({
                     path: '/todo',
-                    query: { keyword: createKeyword.value }
+                    query: { keyword: createKeyword.value,
+                        list_id: createResponse.data.list_id,
+                     }
                 })
-            } else if (createResponse.data.result === 1) {
+            } else if (createResponse.data.result === 0) {
                 //既に存在した場合
                 errorMessage.value = '既にその名前は使用されています'
                 showErrorModal.value = true
@@ -68,7 +71,7 @@ const createTodo = async () => {
 const searchTodo = async () => {
     if (searchKeyword.value.trim()) {
         try {
-            const searchResponse = await axios.get('http://127.0.0.1/api/todo-contents', {
+            const searchResponse = await axios.get(`${API_URL}todo-contents`, {
                 params: {
                     list_name: searchKeyword.value
                 }

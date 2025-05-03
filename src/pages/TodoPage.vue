@@ -30,6 +30,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import ErrorModal from '@/components/ErrorModal.vue'
 import axios from 'axios'
+import { API_URL } from '@/constants/api'
 
 interface TodoItem {
     content_id: number
@@ -71,13 +72,13 @@ onMounted(() => {
 const addTask = async () => {
     if (addTaskWord.value) {
         try {
-            await axios.post('http://127.0.0.1/api/todo-contents', {
+            await axios.post(`${API_URL}todo-contents`, {
                 list_id: listId.value,
                 content_name: addTaskWord.value
             })
 
             // タスク追加後に最新のタスクリストを取得
-            const listResponse = await axios.get('http://127.0.0.1/api/todo-contents', {
+            const listResponse = await axios.get(`${API_URL}todo-contents`, {
                 params: {
                     list_name: TodoName.value
                 }
@@ -97,13 +98,13 @@ const addTask = async () => {
 
 const deleteTask = async (contentId: number) => {
     try {
-        await axios.delete('http://127.0.0.1/api/todo-contents', {
+        await axios.delete(`${API_URL}todo-contents`, {
             params: {
                 content_id: contentId
             }
         })
         // タスク削除後に最新のタスクリストを取得
-        const listResponse = await axios.get('http://127.0.0.1/api/todo-contents', {
+        const listResponse = await axios.get(`${API_URL}todo-contents`, {
             params: {
                 list_name: TodoName.value
             }
