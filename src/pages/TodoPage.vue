@@ -71,7 +71,7 @@ onMounted(() => {
 const addTask = async () => {
     if (addTaskWord.value) {
         try {
-            const response = await axios.post('http://127.0.0.1/api/todo-contents', {
+            await axios.post('http://127.0.0.1/api/todo-contents', {
                 list_id: listId.value,
                 content_name: addTaskWord.value
             })
